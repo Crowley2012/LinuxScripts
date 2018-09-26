@@ -1,10 +1,12 @@
 #!/bin/bash
 #configures a fresh Ubuntu install
 
-#set hostname
-sudo hostname ubuntu
+#get windows username
+echo "What is your windows username?"
+read username
 
 #apt-get aliases
+echo "" >> ~/.bashrc
 echo "alias update='sudo apt-get update'" >> ~/.bashrc
 echo "alias upgrade='sudo apt-get upgrade'" >> ~/.bashrc
 echo "alias install='sudo apt-get install'" >> ~/.bashrc
@@ -24,6 +26,11 @@ echo "alias edit='nano ~/.bashrc'" >> ~/.bashrc
 echo "alias setup-display='export DISPLAY=:0'" >> ~/.bashrc
 echo "" >> ~/.bashrc
 
+#code aliases
+echo "alias dev='cd /mnt/c/dev'" >> ~/.bashrc
+echo "alias code='\"/mnt/c/Users/"$username"/AppData/Local/Programs/Microsoft VS Code/Code.exe\"'" >> ~/.bashrc
+echo "alias run='dotnet build;dotnet run'" >> ~/.bashrc
+
 #power aliases
 echo "alias reboot='sudo reboot'" >> ~/.bashrc
 echo "alias poweroff='sudo poweroff'" >> ~/.bashrc
@@ -41,25 +48,25 @@ echo -e "function uninstall {
 . ~/.bashrc
 
 #update system
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get -y update
+sudo apt-get -y upgrade
 
 #install programs
-sudo apt-get install git
-sudo apt-get install gedit
-sudo apt-get install sl
+sudo apt-get -y install git
+sudo apt-get -y install gedit
+sudo apt-get -y install sl
 
 #install dotnet
 wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get install apt-transport-https
-sudo apt-get update
-sudo apt-get install dotnet-sdk-2.1
+sudo apt-get -y install apt-transport-https
+sudo apt-get -y update
+sudo apt-get -y install dotnet-sdk-2.1
 
 #cleanup
 rm -r packages-microsoft-prod.deb
-sudo apt-get autoremove
-sudo apt-get clean
+sudo apt-get -y autoremove
+sudo apt-get -y clean
 
 #done
 clear
