@@ -1,0 +1,27 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Sean Crowley
+	email = Sean-Patrick.Crowley@Partner.BMWGroup.com
+[core]
+    editor = code --wait
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[color]
+    status = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+[commit]
+    template = ~/.stCommitMsg
+[push]
+    default = simple
