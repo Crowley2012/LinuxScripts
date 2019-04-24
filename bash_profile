@@ -15,8 +15,9 @@ alias cl='clear; ls'
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'  
 alias numFiles='echo $(ls -1 | wc -l)' 
 alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
-alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE' 
-alias update='sudo softwareupdate -i -a'        
+alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
+alias comms='cat ~/.bash_profile | grep "()";alias'
+alias update='sudo softwareupdate -i -a'    
 
 # Public facing IP Address
 alias myip='curl ip.appspot.com'  
